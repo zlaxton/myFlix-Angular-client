@@ -44,7 +44,7 @@ export class ProfileDeleteComponent implements OnInit {
         );
         localStorage.clear();
       },
-      (result) => {
+      (_result) => {
         this.snackBar.open('Something went wrong, please try later.', 'Ok', {
           duration: 2000,
         });
