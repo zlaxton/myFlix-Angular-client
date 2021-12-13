@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://rocky-bayou-72593.herokuapp.com//';
+const apiUrl = 'https://rocky-bayou-72593.herokuapp.com/';
 
 const token = localStorage.getItem('token');
 
