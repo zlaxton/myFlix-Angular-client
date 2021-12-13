@@ -46,18 +46,20 @@ export class ProfileEditComponent implements OnInit {
    * A snack bar element is shown, containing the result of the operation
    */
   editUser(): void {
-    this.fetchApiData
-      .editUser(this.user.Username, this.userData)
-      .subscribe((res) => {
-        this.dialogRef.close();
-        //updating the localstorage with the updated user
-        localStorage.setItem('user', JSON.stringify(res));
-        this.snackBar.open('The profile was successfully updated!', 'Nice', {
-          duration: 2000,
-        });
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+    this.fetchApiData.editUser(this.user.Username, this.userData).subscribe((res) => {
+      this.dialogRef.close();
+      localStorage.setItem('user', res.Username);
+      // console.log(res);
+      this.snackBar.open(this.userData.Username, 'Successfully updated user details!', {
+        duration: 3000
       });
+    }, (res) => {
+      this.snackBar.open(res, 'OK', {
+        duration: 3000
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    });
   }
 }
