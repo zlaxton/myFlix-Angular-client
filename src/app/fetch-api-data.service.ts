@@ -24,10 +24,10 @@ const headers = {
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  addToFavorites(movieId: any) {
+  addToFavorites(_movieId: any): void {
     throw new Error('Method not implemented.');
   }
-  removeFromFavorites(id: string) {
+  removeFromFavorites(_id: string) {
     throw new Error('Method not implemented.');
   }
   // Inject the HttpClient module to the constructor params
@@ -44,7 +44,7 @@ export class FetchApiDataService {
         `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
       );
     }
-    return throwError('Something bad happened; please try again later.');
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
   // Non-typed response extraction
