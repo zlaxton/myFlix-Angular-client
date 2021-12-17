@@ -32,7 +32,9 @@ export class FetchApiDataService {
   }
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router) {
     this.http = http;
   }
 
@@ -60,7 +62,7 @@ export class FetchApiDataService {
    * @returns an Observable containing a response
    */
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
+    //console.log(userDetails);
     return this.http
       .post(apiUrl + 'users/register', userDetails)
       .pipe(catchError(this.handleError));
@@ -90,9 +92,12 @@ export class FetchApiDataService {
    */
   public getAllMovies(): Observable<any> {
     //this has type Observable
-    const response = this.http.get(apiUrl + 'catalog/movies', headers);
-
-    return response.pipe(
+    return this.http.get(apiUrl + 'movies', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer  ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -104,8 +109,12 @@ export class FetchApiDataService {
    * @returns an Observable containing a response
    */
   public getAllGenres(): Observable<any> {
-    const response = this.http.get(apiUrl + 'catalog/genres', headers);
-    return response.pipe(
+    return this.http.get(apiUrl + 'genres', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -117,8 +126,12 @@ export class FetchApiDataService {
    * @returns an Observable containing a response
    */
   public getAllActors(): Observable<any> {
-    const response = this.http.get(apiUrl + 'catalog/actors', headers);
-    return response.pipe(
+    return this.http.get(apiUrl + 'catalog/actors', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -130,8 +143,12 @@ export class FetchApiDataService {
    * @returns an Observable containing a response
    */
   public getAllDirectors(): Observable<any> {
-    const response = this.http.get(apiUrl + 'catalog/directors', headers);
-    return response.pipe(
+    return this.http.get(apiUrl + 'directors', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -143,50 +160,67 @@ export class FetchApiDataService {
    * @param movieTitle the id of the movie to retrieve
    * @returns an Observable containing a response
    */
-  public getMovie(movieTitle: string): Observable<any> {
-    const response = this.http.get(
-      apiUrl + 'catalog/movies/' + movieTitle,
-      headers
-    );
-    return response.pipe(
+  public getAMovie(): Observable<any> {
+    return this.http.get(apiUrl + 'movies/:movieId', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
 
   /**
-   * Calls the /directors/:directornName endpoint
-   * @function getDirector
-   * @param directorNane the name of the actor to retrieve
-   * @returns an Observable containig a response
-   */
-  public getDirector(directorNane: string): Observable<any> {
-    const response = this.http.get(
-      apiUrl + 'catalog/directors/' + directorNane,
-      headers
-    );
-    return response.pipe(
+     * Get one director
+     * @returns a director
+     */
+  getDirector(): Observable<any> {
+    return this.http.get(apiUrl + 'directors/:name', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
 
   /**
-   * Calls the /genres/:genreName endpoint
-   * @function getGenre
-   * @param genreName the name of the genre to retrieve
-   * @returns an Observable conianing a response
-   */
-  public getGenre(genreName: string): Observable<any> {
-    const response = this.http.get(
-      apiUrl + 'catalog/genres/' + genreName,
-      headers
-    );
-    return response.pipe(
+    * Get all genres
+    * @returns an array of genres
+    */
+  getGenres(): Observable<any> {
+    return this.http.get(apiUrl + 'genres', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
+
+  /**
+   * Get one genre
+   * @returns a genre
+   */
+  getAGenre(): Observable<any> {
+    return this.http.get(apiUrl + 'genres/:name', {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
+
 
   /**
    * Calls the /users/:username endpoint
@@ -195,8 +229,12 @@ export class FetchApiDataService {
    * @returns an Observable conianing a response
    */
   public getUser(username: any): Observable<any> {
-    const response = this.http.get(apiUrl + 'users/' + username, headers);
-    return response.pipe(
+    return this.http.get(apiUrl + `users/${username}`, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -208,12 +246,14 @@ export class FetchApiDataService {
    * @param username the username of the user to retrieve the favorite movies of
    * @returns an Observable containing a response
    */
-  public getFavMovies(username: string): Observable<any> {
-    const response = this.http.get(
-      apiUrl + 'users/' + username + '/favorites',
-      headers
-    );
-    return response.pipe(
+  public getFavMovies(): Observable<any> {
+    const user = localStorage.getItem('username');
+    return this.http.get(apiUrl + `users/${user}/movies`, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
