@@ -9,7 +9,7 @@
    They can modify account information, add or remove movies from their
    list of favorites, or delete their account.
 
-## Technlogies: 
+## Technlogies 
    - MongoDB, 
    - Angular, 
    - Express.js, Node.js. 
@@ -18,8 +18,13 @@
              
 ## Design
 
-   I used angular material to design the app: MatExpansion, MatDialog, 
-   MatSnackBar, MatToolbar, MatIcon, MatCard, etc...
+   I used angular material to design the app: 
+   - MatExpansion, 
+   - MatDialog, 
+   - MatSnackBar, 
+   - MatToolbar, 
+   - MatIcon, 
+   - MatCard, etc...
   
 
 ## **Setting up the tools:**
@@ -50,7 +55,7 @@
 
 ## **Running unit tests**
 
- Run ***ng test*** to execute the unit tests via **Karma**.
+ Run ***ng test*** to execute the unit tests via [Karma](url).
 
 ## **Running end-to-end tests**
 
@@ -58,6 +63,6 @@
 
 ## **Further help**
 
-### To get more help on the Angular CLI use ng help or go check out the Angular CLI Overview and Command Reference page.
+ To get more help on the Angular CLI use ng help or go check out the [Angular CLI Overview and Command Reference](url) page.
 
 
