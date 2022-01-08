@@ -31,6 +31,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserFavoritesComponent } from './user-favorites/user-favorites.component';
 
 
 
@@ -56,6 +57,7 @@ export class MaterialModule { }
     GenreCardComponent,
     DescriptionCardComponent,
     NavbarComponent,
+    UserFavoritesComponent,
     
   ],
   imports: [

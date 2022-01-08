@@ -18,13 +18,13 @@
 
 .mat-drawer-container {
   .mat-drawer-content {
-    background-color: #202136;
+    background-color: #536660;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .mat-drawer {
-    background-color: #27273f;
+    background-color: #69697e;
   }
   .mat-toolbar {
     img {
@@ -32,13 +32,13 @@
       padding: 7px;
     }
     &.mat-primary {
-      background-image: linear-gradient(90deg, #27273f, #e91e63);
+      background-image: linear-gradient(90deg, #707080, #e91e63);
     }
     @media screen and (max-width: 500px) {
       display: flex;
       justify-content: space-between;
       &.mat-primary {
-        background-image: linear-gradient(90deg, #e91e63, #27273f);
+        background-image: linear-gradient(90deg, #e91e63, #74748b);
       }
     }
   }

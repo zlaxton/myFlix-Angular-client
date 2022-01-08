@@ -1,15 +1,23 @@
-#mat-dialog-0 {
+app-user-favorites {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
-
-.movies-wrapper {
+.favorites-wrapper {
+  h2 {
+    text-align: center;
+    padding-top: 60px;
+    @media screen and (max-width: 500px) {
+      padding-top: 20px;
+    }
+  }
+}
+.favorites {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 60px 30px;
-  background-color: #59744f;
+  padding: 20px 30px;
+  background-color: #8486a8;
   @media screen and (max-width: 500px) {
     padding: 0;
   }
@@ -22,7 +30,7 @@
   align-items: center;
   position: relative;
   padding: 40px;
-  background-color: #59744f;
+  background-color: #828299;
   max-width: 300px;
   width: 300px;
   .mat-icon-button {

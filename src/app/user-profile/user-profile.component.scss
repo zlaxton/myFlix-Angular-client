@@ -1,0 +1,17 @@
+.user-profile-wrapper {
+  padding-top: 60px;
+  .mat-card {
+    padding: 20px 40px 40px;
+    display: flex;
+    justify-content: center;
+    .mat-card-header {
+      h2 {
+        margin-top: 0;
+      }
+    }
+    .mat-card-actions {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

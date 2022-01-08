@@ -1,7 +1,7 @@
 /**
- * MovieCardComponent view holds informations about a movie, such as title, poster image, director, genre and Description.
- * It allosw a user to like a movie by clicking on the heart shaped icon.
- * @module MovieCardComponent
+ * UserFavoritesComponent view allows a user to view their list of favorites
+ * offering the option to remove a movie from the list of favorites or visualize info about director, genre and its Description.
+ * @module UserFavoritesComponent
  */
 
  import { Component, OnInit } from '@angular/core';
@@ -14,15 +14,13 @@
  import { DirectorCardComponent } from '../director-card/director-card.component';
  
  @Component({
-   selector: 'app-movie-card',
-   templateUrl: './movie-card.component.html',
-   styleUrls: ['./movie-card.component.scss'],
+   selector: 'app-user-favorites',
+   templateUrl: './user-favorites.component.html',
+   styleUrls: ['./user-favorites.component.scss'],
  })
- export class MovieCardComponent implements OnInit {
-   //Getting the user info from localStorage if present
+ export class UserFavoritesComponent implements OnInit {
    user: any = JSON.parse(localStorage.getItem('user') || '');
-   movies: any[] = [];
-   favMovies: any[] = this.user.FavoriteMovies;
+   favMovies: any[] = [];
  
    /**
     * All constructor items are documented as properties
@@ -36,21 +34,11 @@
    ) {}
  
    /**
-    * Initializes component, retrieves all movies and the user's faviorites
+    * Initializes the component
+    * @ignore
     */
    ngOnInit(): void {
-     this.getMovies();
      this.getUserFavs();
-   }
- 
-   /**
-    * Retrieves all the movies from the database
-    */
-   getMovies(): void {
-     this.fetchApiData.getAllMovies().subscribe((res: any) => {
-       this.movies = res;
-       return this.movies;
-     });
    }
  
    /**
@@ -184,4 +172,3 @@
        : this.addToFavs(movie._id, movie.Title);
    }
  }
-

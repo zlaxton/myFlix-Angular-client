@@ -1,1 +1,13 @@
-<p>director-card works!</p>
+<div class="director-dialog-wrapper">
+  <button mat-icon-button color="dark" [mat-dialog-close]="true">
+    <mat-icon class="close">close</mat-icon>
+  </button>
+  <h2>{{ data.name }}</h2>
+  <h3>Biography</h3>
+  <p>{{ data.bio }}</p>
+  <h3>Facts</h3>
+  <p><b>Birth Date: </b>{{ data.birthDate | date: "MM/dd/yyyy":"UTC" }}</p>
+  <p *ngIf="data.deathDate">
+    <b>Death Date: </b>{{ data.deathDate | date: "MM/dd/yyyy":"UTC" }}
+  </p>
+</div>
