@@ -103,7 +103,7 @@
     * Updates the local list of favorites by downloading it from the DB
     */
    getUserFavs(): any {
-     this.fetchApiData.getUser(this.user).subscribe((res: any) => {
+     this.fetchApiData.getFavMovies(this.user.Username).subscribe((res: any) => {
        this.favMovies = res.Favorites;
        return this.favMovies;
      });
