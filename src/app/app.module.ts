@@ -38,7 +38,9 @@ import { UserFavoritesComponent } from './user-favorites/user-favorites.componen
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movies', component: MovieCardComponent },
+  { path: 'movies', component: NavbarComponent },
+  { path: 'user', component: NavbarComponent },
+  { path: 'favorites', component: NavbarComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
