@@ -1,6 +1,6 @@
 /**
- * MovieCardComponent view holds informations about a movie, such as title, poster image, director, genre and Description.
- * It allosw a user to like a movie by clicking on the heart shaped icon.
+ * MovieCardComponent view holds information about a movie, such as title, poster image, director, genre and Description.
+ * It allows a user to like a movie by clicking on the heart shaped icon.
  * @module MovieCardComponent
  */
 
@@ -36,7 +36,7 @@
    ) {}
  
    /**
-    * Initializes component, retrieves all movies and the user's faviorites
+    * Initializes component, retrieves all movies and the user's favorites
     */
    ngOnInit(): void {
      this.getMovies();
@@ -69,7 +69,7 @@
     * Opens a dialog containing info about the director
     * @param name the name of the director
     * @param bio the bio of the director
-    * @param birthDate bith date of the director
+    * @param birthDate birth date of the director
     * @param deathDate death date of the director
     */
    openDirectorDialog(
@@ -166,7 +166,7 @@
    /**
     * Checks if a movie is included in the user's list of favorites
     * @param movieId the id of the movie
-    * @returns true if the movie is in the list of favorites, false otherwhise
+    * @returns true if the movie is in the list of favorites, false otherwise
     */
    isFav(movieId: string): boolean {
      return this.favMovies.some((movie) => movie._id === movieId);
